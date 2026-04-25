@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Manisha!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: #fdf2f8;
+            transition: background 1s ease;
+            touch-action: manipulation;
+        }
+
+        .cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Home Screen Unique Design */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(255, 182, 193, 0.4);
+            border-radius: 2rem;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .bg-glow {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,105,180,0.3) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(40px);
+            animation: pulse-glow 4s infinite alternate;
+        }
+
+        @media (min-width: 768px) {
+            .bg-glow {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        @keyframes pulse-glow {
+            from { transform: scale(1); opacity: 0.5; }
+            to { transform: scale(1.3); opacity: 0.8; }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 55px;
+            border-radius: 50%;
+            animation: float 6s infinite ease-in;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .balloon {
+                width: 50px;
+                height: 70px;
+            }
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 1.5px;
+            height: 15px;
+            background: rgba(0,0,0,0.15);
+        }
+
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            animation: float 4s infinite linear;
+            z-index: 5;
+        }
+
+        .hidden-section {
+            display: none;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease-out;
+        }
+
+        .visible-section {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .btn-grad {
+            background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
+            transition: 0.5s;
+            background-size: 200% auto;
+            box-shadow: 0 4px 15px rgba(221, 36, 118, 0.3);
+        }
+
+        .btn-grad:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+        }
+
+        .shake {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        /* Text responsive fixes */
+        .responsive-title {
+            font-size: clamp(2.5rem, 10vw, 5rem);
+        }
+    </style>
+</head>
+<body class="h-screen flex items-center justify-center relative bg-[#fff5f8]">
+
+    <!-- Background Glow Elements for Home -->
+    <div id="glows">
+        <div class="bg-glow -top-10 -left-10"></div>
+        <div class="bg-glow -bottom-10 -right-10" style="animation-delay: -2s;"></div>
+    </div>
+
+    <!-- Password Protection Landing -->
+    <div id="landing" class="z-20 px-4 w-full flex justify-center">
+        <div class="glass-card p-8 md:p-12 text-center">
+            <div class="inline-block mb-4 md:mb-6 relative">
+                <span class="text-6xl md:text-7xl animate-bounce block">🎁</span>
+                <div class="absolute -top-1 -right-1 w-5 h-5 bg-pink-500 rounded-full animate-ping"></div>
+            </div>
+            
+            <h1 class="text-3xl md:text-4xl font-bold text-pink-600 mb-2 cursive">Special Delivery</h1>
+            <p class="text-gray-500 mb-6 md:mb-8 text-sm md:text-base font-light italic">Reserved for Manisha • April 24th</p>
+            
+            <div class="space-y-4 md:space-y-6">
+                <div class="relative">
+                    <input 
+                        type="password" 
+                        id="passwordInput" 
+                        inputmode="text"
+                        placeholder="Secret Keyword..." 
+                        class="w-full px-5 py-3 md:py-4 rounded-2xl border-none bg-white bg-opacity-60 shadow-inner focus:ring-2 focus:ring-pink-300 focus:outline-none text-center text-base md:text-lg placeholder-pink-200 transition-all appearance-none"
+                    >
+                </div>
+                <button id="openBtn" class="btn-grad w-full text-white font-bold py-3 md:py-4 px-8 rounded-2xl text-base md:text-lg uppercase tracking-widest focus:outline-none transition-all active:scale-95">
+                    Unlock Surprise
+                </button>
+                <p id="errorMsg" class="text-pink-400 text-xs md:text-sm hidden font-medium">Incorrect password. Hint: It's mariladdu!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Celebration Page -->
+    <div id="celebration" class="hidden-section fixed inset-0 flex-col items-center justify-center text-center p-4 md:p-8 bg-white bg-opacity-95 overflow-hidden">
+        
+        <div class="relative z-30 w-full max-w-2xl">
+            <h2 class="text-pink-500 text-lg md:text-2xl font-semibold mb-1">April 24th Special</h2>
+            <h1 class="responsive-title cursive text-pink-600 mb-4 md:mb-8 drop-shadow-xl leading-tight">
+                Happy Birthday <br> Manisha!
+            </h1>
+            
+            <div class="mx-auto bg-white p-6 md:p-10 rounded-3xl shadow-2xl border-b-8 border-pink-400 transform hover:rotate-1 transition-transform">
+                <p class="text-base md:text-xl text-gray-700 leading-relaxed italic font-light">
+                    "On this beautiful 24th of April, may your day be as bright as your smile and as lovely as you are. Wishing you a year filled with magic, laughter, and endless joy!"
+                </p>
+                <div class="mt-4 md:mt-8 text-4xl md:text-6xl">🎂✨🧁💖</div>
+            </div>
+
+            <button onclick="location.reload()" class="mt-8 md:mt-12 text-pink-400 hover:text-pink-600 underline text-xs md:text-sm tracking-widest uppercase focus:outline-none">
+                Restart Surprise
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const openBtn = document.getElementById('openBtn');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorMsg = document.getElementById('errorMsg');
+        const landing = document.getElementById('landing');
+        const celebration = document.getElementById('celebration');
+        const glows = document.getElementById('glows');
+
+        const SECRET_PASSWORD = "mariladdu";
+        const colors = ['#FF69B4', '#FFB6C1', '#FFC0CB', '#DA70D6', '#BA55D3', '#9370DB', '#FFD700'];
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 90 + 5 + 'vw';
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            balloon.style.opacity = Math.random() * 0.5 + 0.5;
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 7000);
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 4000);
+        }
+
+        function unlock() {
+            const enteredPassword = passwordInput.value.toLowerCase().trim();
+            
+            if (enteredPassword === SECRET_PASSWORD) {
+                // Hide landing and glows
+                landing.style.display = 'none';
+                glows.style.display = 'none';
+                
+                // Show celebration
+                celebration.classList.remove('hidden-section');
+                celebration.classList.add('visible-section');
+
+                // Change background
+                document.body.style.background = "radial-gradient(circle, #ffffff 0%, #fae8ff 100%)";
+
+                // Start animations - fewer for mobile to maintain performance
+                const isMobile = window.innerWidth < 768;
+                setInterval(createBalloon, isMobile ? 600 : 400);
+                setInterval(createConfetti, isMobile ? 250 : 150);
+            } else {
+                // Wrong password effect
+                passwordInput.classList.add('shake');
+                passwordInput.style.backgroundColor = "rgba(254, 226, 226, 0.8)";
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => {
+                    passwordInput.classList.remove('shake');
+                    passwordInput.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+                }, 500)
+            }
+        }
+
+        openBtn.addEventListener('click', unlock);
+        
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') unlock();
+        });
+    </script>
+</body>
+</html>
